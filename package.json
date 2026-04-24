@@ -1,9 +1,9 @@
 {
   "name": "devenv-vscode",
-  "displayName": "DevEnv",
+  "displayName": "DevEnv Drift Guard",
   "description": "Detect repo environment drift, generate devenv.yaml, and surface setup issues inside VS Code.",
   "version": "0.0.1",
-  "publisher": "devenv",
+  "publisher": "AimSoftwares",
   "license": "Apache-2.0",
   "icon": "media/icon.png",
   "repository": {
