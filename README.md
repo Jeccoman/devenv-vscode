@@ -1,8 +1,10 @@
 # DevEnv VS Code Extension
 
-This is the standalone VS Code extension for DevEnv.
+Detect environment drift in a repository before it turns into setup churn, broken onboarding, or CI surprises.
 
-## MVP features
+DevEnv scans common runtime and container files, highlights mismatches inside VS Code, and helps you generate a starter `devenv.yaml`.
+
+## What it does
 
 - Scans `.nvmrc`, `.node-version`, `.python-version`, `package.json`, `pyproject.toml`, `devcontainer.json`, Dockerfiles, compose files, and GitHub Actions workflows
 - Detects Node and Python drift across local setup, containers, and CI
@@ -11,6 +13,17 @@ This is the standalone VS Code extension for DevEnv.
 - Adds a DevEnv sidebar inspector for issues and detected signals
 - Generates a starter `devenv.yaml`
 
+## Install
+
+Install from the VS Code Marketplace when published, or install the packaged `.vsix` locally.
+
+```bash
+pnpm install
+pnpm package
+```
+
+Then in VS Code, run `Extensions: Install from VSIX...` and choose the generated file.
+
 ## Commands
 
 - `DevEnv: Scan Workspace`
@@ -18,7 +31,7 @@ This is the standalone VS Code extension for DevEnv.
 - `DevEnv: Generate devenv.yaml`
 - `DevEnv: Fix Drift`
 
-## Demo workspace
+## Try it locally
 
 Open `demo-workspace` to test the extension against a repo with intentional Node, Python, container, and CI drift.
 
@@ -29,16 +42,17 @@ Expected behavior:
 - quick fixes offer a one-click alignment path
 - `DevEnv: Generate devenv.yaml` produces a canonical starter spec
 
-## Development
+## Use it
+
+1. Open a repository in VS Code.
+2. Run `DevEnv: Scan Workspace`.
+3. Review issues in diagnostics, the status bar, and the DevEnv inspector.
+4. Run `DevEnv: Fix Drift` or apply quick fixes where available.
+5. Run `DevEnv: Generate devenv.yaml` to create a starter environment contract.
+
+## Develop
 
 1. Open this folder in VS Code.
-2. Press `F5` to launch an Extension Development Host.
-3. Open `demo-workspace` or a repo with mixed Node or Python version declarations.
-4. Use the DevEnv activity bar view to inspect issues and signals.
-5. Run the DevEnv commands from the command palette or quick fixes.
-6. Run `pnpm install`.
-7. Run `pnpm package` to build a `.vsix`.
-
-## Publishing
-
-Use `PUBLISHING.md` for the Marketplace checklist and publish commands.
+2. Run `pnpm install`.
+3. Press `F5` to launch an Extension Development Host.
+4. Open `demo-workspace` or another repo with mixed runtime declarations.

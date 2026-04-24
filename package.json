@@ -4,7 +4,7 @@
   "description": "Detect repo environment drift, generate devenv.yaml, and surface setup issues inside VS Code.",
   "version": "0.0.1",
   "publisher": "devenv",
-  "license": "UNLICENSED",
+  "license": "Apache-2.0",
   "icon": "media/icon.png",
   "repository": {
     "type": "git",
@@ -42,11 +42,9 @@
   "scripts": {
     "build": "esbuild extension.js --bundle --platform=node --format=cjs --external:vscode --outfile=dist/extension.js",
     "check": "node --check extension.js",
-    "publish:precheck": "pnpm check && pnpm package",
     "prepackage": "pnpm build",
     "package": "vsce package --no-dependencies",
-    "package:pre-release": "vsce package --pre-release --no-dependencies",
-    "publish:marketplace": "vsce publish --no-dependencies"
+    "package:pre-release": "vsce package --pre-release --no-dependencies"
   },
   "contributes": {
     "viewsContainers": {
