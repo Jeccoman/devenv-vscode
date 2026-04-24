@@ -1,0 +1,10 @@
+{
+  "name": "DevEnv Drift Demo",
+  "image": "node:19-bullseye",
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.10"
+    }
+  },
+  "runServices": ["app", "postgres"]
+}

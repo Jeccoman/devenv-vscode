@@ -1,0 +1,5 @@
+Copyright (c) DevEnv.
+
+All rights reserved.
+
+This extension is not licensed for redistribution, modification, or commercial use without prior written permission.

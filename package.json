@@ -1,0 +1,108 @@
+{
+  "name": "devenv-vscode",
+  "displayName": "DevEnv",
+  "description": "Detect repo environment drift, generate devenv.yaml, and surface setup issues inside VS Code.",
+  "version": "0.0.1",
+  "publisher": "devenv",
+  "license": "UNLICENSED",
+  "icon": "media/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jeccoman/devenv-vscode.git"
+  },
+  "homepage": "https://github.com/Jeccoman/devenv-vscode",
+  "bugs": {
+    "url": "https://github.com/Jeccoman/devenv-vscode/issues"
+  },
+  "keywords": [
+    "devcontainer",
+    "environment",
+    "drift",
+    "node",
+    "python",
+    "developer-tools"
+  ],
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": [
+    "Other",
+    "Linters",
+    "Programming Languages"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:devenv.scanWorkspace",
+    "onCommand:devenv.checkDrift",
+    "onCommand:devenv.generateSpec",
+    "onCommand:devenv.fixDrift",
+    "onView:devenv.inspector"
+  ],
+  "main": "./dist/extension.js",
+  "scripts": {
+    "build": "esbuild extension.js --bundle --platform=node --format=cjs --external:vscode --outfile=dist/extension.js",
+    "check": "node --check extension.js",
+    "publish:precheck": "pnpm check && pnpm package",
+    "prepackage": "pnpm build",
+    "package": "vsce package --no-dependencies",
+    "package:pre-release": "vsce package --pre-release --no-dependencies",
+    "publish:marketplace": "vsce publish --no-dependencies"
+  },
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "devenv",
+          "title": "DevEnv",
+          "icon": "media/devenv.svg"
+        }
+      ]
+    },
+    "views": {
+      "devenv": [
+        {
+          "id": "devenv.inspector",
+          "name": "Inspector"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "devenv.scanWorkspace",
+        "title": "DevEnv: Scan Workspace"
+      },
+      {
+        "command": "devenv.checkDrift",
+        "title": "DevEnv: Check Drift"
+      },
+      {
+        "command": "devenv.generateSpec",
+        "title": "DevEnv: Generate devenv.yaml"
+      },
+      {
+        "command": "devenv.fixDrift",
+        "title": "DevEnv: Fix Drift"
+      },
+      {
+        "command": "devenv.refreshInspector",
+        "title": "DevEnv: Refresh Inspector"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "devenv.refreshInspector",
+          "when": "view == devenv.inspector",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "yaml": "^2.8.3"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^3.9.1",
+    "esbuild": "^0.28.0"
+  }
+}

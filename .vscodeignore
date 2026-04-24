@@ -1,0 +1,11 @@
+.gitignore
+.vscode/**
+.vscode-test/**
+demo-workspace/**
+dist/**/*.map
+extension.js
+pnpm-lock.yaml
+src/**
+tsconfig.json
+*.map
+*.ts
